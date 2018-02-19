@@ -62,10 +62,10 @@ class ReportErrorLink extends ApolloLink {
     this.errorCallback = errorCallback;
   }
   request(operation, forward) {
-    const observer = forward(operation);
+    const observerable = forward(operation);
     // errors will be sent to the errorCallback
-    observer.subscribe({ error: this.errorCallback })
-    return observer;
+    observerable.subscribe({ error: this.errorCallback })
+    return observerable;
   }
 }
 
